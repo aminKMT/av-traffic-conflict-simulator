@@ -13,13 +13,13 @@ This repository is the **open-core edition** of the AV Traffic Conflict Simulato
 
 ### Web application
 
-![AV Traffic Conflict Simulator web interface](docs/assets/web-app.svg)
+![AV Traffic Conflict Simulator web app](Figs/WebAPP.png)
 
 The newer web interface extends the simulator from passive conflict playback toward interactive AV stress testing. The demonstration build includes live AV decision status, active avoidance-path visualization, configurable sensing/response behavior, and richer scenario controls.
 
 ### iPhone / iOS home-screen experience
 
-![AV Traffic Conflict Simulator iOS home-screen interface](docs/assets/ios-home-screen.svg)
+![AV Traffic Conflict Simulator web app](Figs/IOS.jpg)
 
 The simulator can also be used from an iPhone as a **home-screen web app experience**. The mobile layout provides touch-oriented simulation controls, including manual road-user controls in supported builds.
 
