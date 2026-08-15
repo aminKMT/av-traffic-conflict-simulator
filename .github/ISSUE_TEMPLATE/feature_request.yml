@@ -1,0 +1,22 @@
+name: Feature request
+description: Suggest an improvement to the public core
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: usecase
+    attributes:
+      label: Research/engineering use case
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+    validations:
+      required: true
+  - type: textarea
+    id: references
+    attributes:
+      label: Technical references
+      description: For safety measures or algorithms, include methodological sources when possible.
