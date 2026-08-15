@@ -77,7 +77,7 @@ When opened from the Home Screen, the application can feel more app-like and use
 
 ## Video Demo
 
-[▶️ **[Watch the AV Traffic Conflict Simulator demo on YouTube](https://youtu.be/JRR0XONmysU?si=S6EbAqvx7Cc9FDvm)**
+▶️ **[Watch the AV Traffic Conflict Simulator demo on YouTube](https://youtu.be/JRR0XONmysU?si=S6EbAqvx7Cc9FDvm)**
 
 The walkthrough demonstrates TTC/PET analysis, interactive traffic-conflict
 simulation, live AV decisions, and avoidance-path
