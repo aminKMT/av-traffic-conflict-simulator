@@ -75,15 +75,13 @@ You do not need an App Store install to place the hosted simulator on the iOS Ho
 
 When opened from the Home Screen, the application can feel more app-like and uses the mobile-oriented interface where supported. The exact layout and available controls depend on the deployed simulator version and device size.
 
-## Demo video
+## Video Demo
 
-The screenshots above are intentionally used as the primary README media because they load quickly and immediately show the desktop and iOS experiences.
+▶️ **[Watch the AV Traffic Conflict Simulator demo on YouTube]([YOUR_YOUTUBE_URL](https://youtu.be/JRR0XONmysU?si=S6EbAqvx7Cc9FDvm))**
 
-The full demonstration video is better distributed as a **GitHub Release asset** or through a dedicated demo/video host instead of committing a large MP4 to the Git history. This keeps clones lightweight while still making the complete walkthrough available.
-
-> [!CAUTION]
-> 🟨 **UPDATE BEFORE PUBLIC PROMOTION:** add the final demo-video or GitHub Release link here.
-
+The walkthrough demonstrates TTC/PET analysis, interactive traffic-conflict
+simulation, manual road-user driving, live AV decisions, and avoidance-path
+visualization.
 `DEMO_VIDEO_URL`
 
 ## Quick start from source
