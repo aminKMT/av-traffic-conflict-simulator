@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AV Traffic Conflict Simulator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">Surrogate safety laboratory</p>
+      <h1>AV Traffic Conflict Simulator</h1>
+      <p class="subtitle">Explore collision paths, time to collision (TTC), and post-encroachment time (PET).</p>
+    </div>
+    <div class="clock-card"><span>SIMULATION TIME</span><strong id="clock">0.00 s</strong></div>
+  </header>
+
+  <main class="app-grid">
+    <aside class="panel controls" aria-label="Scenario controls">
+      <div class="panel-heading"><div><p class="section-kicker">Inputs</p><h2>Scenario setup</h2></div><button id="resetDefaults" class="text-button">Defaults</button></div>
+      <div id="validation" class="validation" role="alert" hidden></div>
+
+      <details open>
+        <summary>Scenario settings</summary>
+        <div class="fields two-col">
+          <label>Road-user type<select id="otherType"><option value="vehicle">Passenger vehicle</option><option value="pedestrian">Pedestrian</option><option value="bicycle">Bicycle</option></select></label>
+          <label>Duration (s)<input id="duration" type="number" value="12" min="0.1" step="0.5"></label>
+          <label>Physics step (s)<input id="timeStep" type="number" value="0.02" min="0.001" max="0.5" step="0.01"></label>
+          <label>Playback speed<select id="playback"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option><option value="4">4×</option></select></label>
+          <label>Zone X (m)<input id="zoneX" type="number" value="0" step="0.5"></label>
+          <label>Zone Y (m)<input id="zoneY" type="number" value="0" step="0.5"></label>
+          <label>Zone width (m)<input id="zoneW" type="number" value="5" min="0.1" step="0.5"></label>
+          <label>Zone height (m)<input id="zoneH" type="number" value="5" min="0.1" step="0.5"></label>
+          <label class="span-2">Near-conflict PET threshold (s)<input id="petThreshold" type="number" value="1.5" min="0" step="0.1"><small>Configurable illustrative assumption — not a universal standard.</small></label>
+        </div>
+      </details>
+
+      <details open>
+        <summary><span class="dot av-dot"></span>Autonomous vehicle</summary>
+        <div class="fields two-col object-fields" data-prefix="av">
+          <label>Initial X (m)<input id="avX" type="number" value="-30" step="0.5"></label><label>Initial Y (m)<input id="avY" type="number" value="0" step="0.5"></label>
+          <label>Speed (m/s)<input id="avSpeed" type="number" value="8" min="0" step="0.5"></label><label>Heading (°)<input id="avHeading" type="number" value="0" step="1"></label>
+          <label>Acceleration (m/s²)<input id="avAccel" type="number" value="0" step="0.1"></label><label>Start delay (s)<input id="avDelay" type="number" value="0" min="0" step="0.1"></label>
+          <label>Length (m)<input id="avLength" type="number" value="4.5" min="0.1" step="0.1"></label><label>Width (m)<input id="avWidth" type="number" value="1.8" min="0.1" step="0.1"></label>
+        </div>
+      </details>
+
+      <details open>
+        <summary><span class="dot other-dot"></span><span id="otherSettingsTitle">Passenger vehicle</span></summary>
+        <div class="fields two-col object-fields" data-prefix="other">
+          <label>Initial X (m)<input id="otherX" type="number" value="0" step="0.5"></label><label>Initial Y (m)<input id="otherY" type="number" value="-30" step="0.5"></label>
+          <label>Speed (m/s)<input id="otherSpeed" type="number" value="8" min="0" step="0.5"></label><label>Heading (°)<input id="otherHeading" type="number" value="90" step="1"></label>
+          <label>Acceleration (m/s²)<input id="otherAccel" type="number" value="0" step="0.1"></label><label>Start delay (s)<input id="otherDelay" type="number" value="0" min="0" step="0.1"></label>
+          <label>Length (m)<input id="otherLength" type="number" value="4.5" min="0.1" step="0.1"></label><label>Width (m)<input id="otherWidth" type="number" value="1.8" min="0.1" step="0.1"></label>
+        </div>
+      </details>
+
+      <div class="example-row"><label>Test scenario<select id="exampleSelect"><option value="collision">Direct collision</option><option value="near">Near conflict · small PET</option><option value="safe">Safe passage · large PET</option><option value="noshared">No shared conflict</option></select></label><button id="loadExample" class="secondary">Load example</button></div>
+      <div class="transport"><button id="play" class="primary">▶ Play</button><button id="pause">Ⅱ Pause</button><button id="step">Step +</button><button id="reset">↺ Reset</button></div>
+    </aside>
+
+    <section class="workspace">
+      <div class="canvas-card">
+        <div class="canvas-toolbar">
+          <div class="legend"><span><i class="legend-av"></i>AV</span><span><i class="legend-other"></i><b id="legendOther">Vehicle</b></span><span><i class="legend-zone"></i>Conflict zone</span><span><i class="legend-min"></i>Predicted minimum</span></div>
+          <div id="riskBadge" class="risk-badge green"><i></i><span>No conflict predicted</span></div>
+        </div>
+        <canvas id="simCanvas" aria-label="Top-down traffic conflict animation"></canvas>
+        <div class="canvas-note">Dashed lines show constant-heading trajectories · Grid spacing: 5 m</div>
+      </div>
+
+      <section class="metrics-panel">
+        <div class="panel-heading"><div><p class="section-kicker">Live analysis</p><h2>Safety measures</h2></div><div id="classification" class="classification incomplete">Simulation incomplete</div></div>
+        <div class="hero-metrics">
+          <article><span>TIME TO COLLISION</span><strong id="ttc">No predicted collision</strong><small id="predictedCollision">Predicted collision: —</small></article>
+          <article><span>POST-ENCROACHMENT TIME</span><strong id="pet">Pending</strong><small>Available after zone traversal</small></article>
+          <article><span>COLLISION STATUS</span><strong id="collisionStatus">No collision</strong><small id="minSep">Minimum separation: —</small></article>
+        </div>
+        <div class="data-grid">
+          <div><span>AV position</span><b id="avPos">(−30.00, 0.00) m</b></div><div><span>Road-user position</span><b id="otherPos">(0.00, −30.00) m</b></div>
+          <div><span>Center distance</span><b id="distance">42.43 m</b></div><div><span>Distance to zone · AV / Other</span><b id="zoneDistance">27.50 / 27.50 m</b></div>
+          <div><span>AV zone entry / exit</span><b id="avZoneTimes">— / —</b></div><div><span>Other zone entry / exit</span><b id="otherZoneTimes">— / —</b></div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <section class="method-strip">
+    <article><span>01</span><div><h3>Two-dimensional TTC</h3><p>Future oriented footprints are propagated with velocity and acceleration. TTC is the earliest future instant at which their rectangles intersect.</p></div></article>
+    <article><span>02</span><div><h3>Event-based PET</h3><p>PET is the gap from the first user completely leaving the shared zone to the second user entering it. Overlapping occupancy produces zero.</p></div></article>
+    <article><span>03</span><div><h3>Anti-tunneling physics</h3><p>Each visual frame is split into small adaptive physics steps, capped by object size and speed, with collision tests at every internal step.</p></div></article>
+  </section>
+  <script src="script.js"></script>
+</body>
+</html>
