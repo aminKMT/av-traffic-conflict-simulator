@@ -56,11 +56,7 @@ These capabilities are being separated carefully into public research infrastruc
 
 ## Live application
 
-> [!CAUTION]
-> 🟨 **TBD** build should be linked from GitHub.
-
-`https://YOUR-DOMAIN.example/`
-TBD, see [docs/GITHUB_PUBLISHING.md](docs/GITHUB_PUBLISHING.md).
+[link to the app](https://av.aminkeramati.com/).
 
 ## Use on iPhone or iPad
 
