@@ -57,11 +57,10 @@ These capabilities are being separated carefully into public research infrastruc
 ## Live application
 
 > [!CAUTION]
-> 🟨 **UPDATE BEFORE PUBLIC PROMOTION:** replace this callout with the final public simulator URL once you decide which hosted build should be linked from GitHub.
+> 🟨 **TBD** build should be linked from GitHub.
 
 `https://YOUR-DOMAIN.example/`
-
-For GitHub Pages deployment notes, see [docs/GITHUB_PUBLISHING.md](docs/GITHUB_PUBLISHING.md).
+TBD, see [docs/GITHUB_PUBLISHING.md](docs/GITHUB_PUBLISHING.md).
 
 ## Use on iPhone or iPad
 
