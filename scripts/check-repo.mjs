@@ -6,7 +6,6 @@ const required = [
   "CITATION.cff",
   "CONTRIBUTING.md",
   "SECURITY.md",
-  "OPEN_CORE.md",
   "app/index.html",
   "app/styles.css",
   "app/script.js"
