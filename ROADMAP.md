@@ -1,6 +1,4 @@
-# Public-Core Roadmap
-
-This roadmap intentionally distinguishes public scientific infrastructure from private/product modules.
+# Roadmap
 
 ## v0.2 — modularize the engine
 
@@ -17,11 +15,11 @@ This roadmap intentionally distinguishes public scientific infrastructure from p
 - Expanded VRU geometry and paths
 - Validation examples with analytical solutions
 
-## v0.4 — open roadway/scenario layer
+## v0.4 — roadway/scenario layer
 
 - Straight, intersection, T-intersection, curve, and roundabout primitives
 - Lane-level paths
-- Basic traffic controls suitable for open examples
+- Traffic-control examples
 - Scenario gallery
 
 ## v0.5 — research interoperability
@@ -29,8 +27,4 @@ This roadmap intentionally distinguishes public scientific infrastructure from p
 - Batch scenario runner
 - CSV/JSON outputs
 - Python-friendly result schema
-- WOMD/trajectory-adapter interfaces where redistribution terms permit
-
-## Private/product track
-
-Potential private modules can evolve independently: advanced autonomy policies, hosted projects, collaboration, proprietary analytics, premium scenario packs, customer integrations, and specialized model/agent pipelines.
+- Trajectory-adapter interfaces where redistribution terms permit
