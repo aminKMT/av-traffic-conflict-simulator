@@ -3,11 +3,11 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Repository checks](https://github.com/aminKMT/av-traffic-conflict-simulator/actions/workflows/quality.yml/badge.svg)](https://github.com/aminKMT/av-traffic-conflict-simulator/actions/workflows/quality.yml)
 
-An interactive browser-based laboratory for exploring **autonomous-vehicle traffic conflicts**, including **Time to Collision (TTC)**, **Post-Encroachment Time (PET)**, predicted collision timing, minimum separation, configurable conflict-zone occupancy, and increasingly interactive AV-behavior experiments.
+An interactive browser-based laboratory for exploring **autonomous-vehicle traffic conflicts**, including **Time to Collision (TTC)**, **Post-Encroachment Time (PET)**, predicted collision timing, minimum separation, configurable conflict-zone occupancy, and interactive AV-behavior experiments.
 
-This repository is the **open-core edition** of the AV Traffic Conflict Simulator. The public core is intended for education, reproducible transportation-safety research, demonstrations, and community contributions. More advanced experimental and product modules can evolve separately from the public core.
+This public repository is intended for education, reproducible transportation-safety research, demonstrations, and community contributions.
 
-> **Status:** v0.1 contains the exported TTC/PET public core. The screenshots below show a newer demonstration build with additional interaction and autonomy capabilities. Not every feature visible in that build is included in the v0.1 public source yet.
+> **Status:** v0.1 contains the TTC/PET public release. The screenshots below show a newer demonstration build with additional interaction and autonomy capabilities. Not every feature visible in that build is included in the v0.1 source release.
 
 ## Preview
 
@@ -24,9 +24,9 @@ The newer web interface extends the simulator from passive conflict playback tow
 The simulator can also be used from an iPhone as a **home-screen web app experience**. The mobile layout provides touch-oriented simulation controls, including manual road-user controls in supported builds.
 
 > [!IMPORTANT]
-> This is a browser-based application added to the iOS Home Screen; it is not being presented here as a native App Store application. Network access may still be required unless offline caching is explicitly configured in a future build.
+> This is a browser-based application added to the iOS Home Screen; it is not being presented here as a native App Store application. Network access may still be required unless offline caching is configured in a deployed build.
 
-## What the current public core includes
+## What the current public release includes
 
 - Top-down AV-versus-road-user simulation
 - Passenger vehicle, pedestrian, and bicycle interaction modes
@@ -42,7 +42,7 @@ The simulator can also be used from an iPhone as a **home-screen web app experie
 
 ## Newer demonstration-build capabilities
 
-The current development/demo version goes beyond the initial public TTC/PET core. The purpose of these additions is to make the simulator useful for **interactive AV safety experiments**, including deliberately difficult situations created by a human tester.
+The current development/demo version goes beyond the initial TTC/PET release and supports interactive AV safety experiments, including deliberately difficult situations created by a human tester.
 
 - **Manual road-user driving:** a tester can take control of a road user with keyboard input in supported desktop builds, creating less predictable and more challenging interactions for the AV.
 - **Human-in-the-loop AV stress testing:** manual control makes it possible to create sudden or unusual maneuvers and observe how the AV responds rather than relying only on predefined trajectories.
@@ -52,11 +52,9 @@ The current development/demo version goes beyond the initial public TTC/PET core
 - **Configurable autonomy behavior:** sensing, reaction, conflict thresholds, and related autonomy parameters can be varied to study how behavior changes under the same traffic interaction.
 - **Mobile manual controls:** supported iOS layouts expose touch controls for manual driving and simulation operation.
 
-These capabilities are being separated carefully into public research infrastructure and advanced modules. See [OPEN_CORE.md](OPEN_CORE.md) for the current public/private boundary.
-
 ## Live application
 
-[link to the app](https://av.aminkeramati.com/).
+[Open the simulator](https://av.aminkeramati.com/).
 
 ## Use on iPhone or iPad
 
@@ -74,9 +72,7 @@ When opened from the Home Screen, the application can feel more app-like and use
 
 ▶️ **[Watch the AV Traffic Conflict Simulator demo on YouTube](https://youtu.be/JRR0XONmysU?si=S6EbAqvx7Cc9FDvm)**
 
-The walkthrough demonstrates TTC/PET analysis, interactive traffic-conflict
-simulation, live AV decisions, and avoidance-path
-visualization.
+The walkthrough demonstrates TTC/PET analysis, interactive traffic-conflict simulation, live AV decisions, and avoidance-path visualization.
 
 ## Quick start from source
 
@@ -102,44 +98,29 @@ npm start
 
 ```text
 .
-├── app/                         # Public browser simulator
+├── app/                         # Browser simulator
 │   ├── index.html
 │   ├── script.js
 │   └── styles.css
-├── docs/
-│   ├── assets/                  # Actual simulator screenshots used in README
-│   └── ...                      # Methodology, architecture, publishing docs
+├── docs/                        # Methodology and architecture documentation
 ├── tests/                       # Lightweight repository/core checks
 ├── scripts/                     # Maintainer tooling
 ├── .github/                     # Issues, PR template, CI
 ├── CITATION.cff                 # Academic/research citation metadata
 ├── CONTRIBUTING.md
 ├── CODE_OF_CONDUCT.md
-├── OPEN_CORE.md                 # Public/private feature boundary
 ├── ROADMAP.md
 ├── SECURITY.md
-└── LICENSE                      # MIT license for this public repository
+└── LICENSE                      # MIT license for this repository
 ```
 
 ## Safety-measure interpretation
 
 This simulator is a **research and educational tool**, not a certified vehicle-safety system and not a substitute for field validation, standards-compliant simulation, or safety-case evidence.
 
-The current public core treats TTC as a predicted time until road-user footprints overlap under the simulator's motion assumptions. PET is computed from the temporal gap between road users occupying the configured conflict zone. The PET threshold in the UI is explicitly configurable and should not be interpreted as a universal safety standard.
+The current release treats TTC as a predicted time until road-user footprints overlap under the simulator's motion assumptions. PET is computed from the temporal gap between road users occupying the configured conflict zone. The PET threshold in the UI is explicitly configurable and should not be interpreted as a universal safety standard.
 
 For implementation notes and validation expectations, read [docs/METHODOLOGY.md](docs/METHODOLOGY.md).
-
-## Open-core model
-
-The intention is to make the scientific and educational foundation open while allowing differentiated advanced modules to remain separately licensed. See [OPEN_CORE.md](OPEN_CORE.md) for the boundary.
-
-A practical split is:
-
-**Open:** basic scene configuration, motion simulation, TTC/PET, conflict classification, visualization, examples, documentation, validation tests, and selected extensibility interfaces.
-
-**Separate advanced modules:** richer autonomy policies, advanced decision/planning logic, hosted projects, collaboration, proprietary analytics, specialized scenario packs, customer integrations, and private/restricted data adapters.
-
-The screenshots and demonstrations can show the direction of the full simulator without implying that every demonstrated capability is already distributed in the MIT-licensed v0.1 core.
 
 ## Research citation
 
@@ -153,12 +134,12 @@ Update the citation metadata with a DOI after an archival release if one is crea
 
 ## Contributing
 
-Issues and pull requests are welcome for the public core. Start with [CONTRIBUTING.md](CONTRIBUTING.md). Please keep private or separately licensed modules out of public pull requests unless they are intentionally being contributed to the open core.
+Issues and pull requests are welcome. Start with [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Good first contribution areas include:
 
 - Unit tests for TTC/PET edge cases
-- Additional open scenario examples
+- Additional scenario examples
 - Accessibility and mobile improvements
 - Validation notebooks using synthetic scenarios
 - Documentation of assumptions
@@ -166,9 +147,7 @@ Good first contribution areas include:
 
 ## License
 
-The code in this public repository is licensed under the [MIT License](LICENSE).
-
-**Important open-core note:** code not present in this repository is not automatically covered by this license. Separate modules should live in separate repositories or distributions with their own license terms.
+The code in this repository is licensed under the [MIT License](LICENSE).
 
 ## Author
 
