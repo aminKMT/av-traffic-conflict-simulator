@@ -5,8 +5,8 @@ Thank you for considering a contribution to the AV Traffic Conflict Simulator.
 ## Before opening a pull request
 
 1. Search existing issues and pull requests.
-2. Keep changes scoped to the public core.
-3. Do not include proprietary source code, confidential data, API secrets, restricted datasets, or assets you do not have permission to redistribute.
+2. Keep changes scoped to this repository.
+3. Do not include confidential data, API secrets, restricted datasets, or assets you do not have permission to redistribute.
 4. For changes to TTC, PET, collision logic, or safety classifications, explain the mathematical assumption and add/adjust tests.
 5. Run:
 
